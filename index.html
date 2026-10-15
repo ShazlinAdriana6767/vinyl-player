@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aesthetic Vinyl Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="player-container">
+    <h1 class="title">MY AESTHETIC VINYL</h1>
+
+    <div class="turntable">
+      <!-- Vinyl Record -->
+      <div class="vinyl-record" id="vinyl">
+        <div class="grooves"></div>
+        <!-- Center Label (Album Art) -->
+        <div class="center-label">
+   <img src="cover.jpeg" id="albumArt" alt="Album Cover">        </div>
+      </div>
+
+      <!-- Tonearm -->
+      <div class="tonearm" id="tonearm">
+        <div class="tonearm-head"></div>
+      </div>
+
+      <!-- Volume Slider Control -->
+      <div class="volume-container">
+        <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.7">
+      </div>
+    </div>
+
+    <!-- Play / Pause Controls -->
+    <div class="controls">
+      <button id="playBtn">PLAY</button>
+    </div>
+  </div>
+
+  <!-- Spotify Web Playback SDK -->
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

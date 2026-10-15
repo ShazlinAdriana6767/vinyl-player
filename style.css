@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ffffff; /* White background */
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.player-container {
+  text-align: center;
+}
+
+.title {
+  letter-spacing: 4px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Turntable Base */
+.turntable {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  max-width: 100vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Vinyl Record */
+.vinyl-record {
+  width: 420px;
+  height: 420px;
+  background:
+    conic-gradient(from 0deg, rgba(255,255,255,0.45), transparent 25%, rgba(255,255,255,0.45) 50%, transparent 75%, rgba(255,255,255,0.45)),
+    radial-gradient(circle, #f9d5df 0%, #f2bccb 70%, #e8a6b9 100%); /* Soft pink vinyl with a light sheen so the spin is visible */
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Spinning Animation */
+.vinyl-record.spinning {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Center Album Art */
+.center-label {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-label img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tonearm */
+.tonearm {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  width: 12px;
+  height: 280px;
+  background: #d9cfd5;
+  border-radius: 6px;
+  transform-origin: 6px 12px;
+  transform: rotate(-30deg);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.tonearm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -14px;
+  width: 40px;
+  height: 40px;
+  background: #b5617f;
+  border-radius: 50%;
+}
+
+.tonearm-head {
+  position: absolute;
+  bottom: 0;
+  left: -8px;
+  width: 28px;
+  height: 40px;
+  background: #b5617f;
+  border-radius: 4px;
+}
+
+.tonearm.playing {
+  transform: rotate(15deg); /* Moves tonearm onto the record */
+}
+
+/* Controls */
+.controls {
+  margin-top: 30px;
+}
+
+button {
+  background-color: #b5617f;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #9b4f6b;
+}
+
+button:focus-visible,
+input[type=range]:focus-visible {
+  outline: 2px solid #1d5f6b;
+  outline-offset: 3px;
+}
+
+.volume-container {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+input[type=range] {
+  accent-color: #b5617f;
+}
